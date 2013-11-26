@@ -19,7 +19,7 @@ export cores=`cat /proc/cpuinfo | grep "^processor" | wc -l`
 [ ! -d $source ] &&  mkdir -p $source
 cd $source
 [ ! -d .repo ] &&  $repo init -u $manifest -g common,devel,nexus5 -b kk4.4
-[ ! -z Makefile ] &&  $repo sync -j$cores -c
+$repo sync -j$cores
 
 #
 # Start with the real building
