@@ -15,7 +15,7 @@ export cores=`cat /proc/cpuinfo | grep "^processor" | wc -l`
 #
 
 [ ! -d $bin ] && mkdir -p $bin
-[ ! -z $repo ] &&  curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $repo; chmod a+x $repo
+[ ! -f $repo ] &&  curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > $repo; chmod a+x $repo
 [ ! -d $source ] &&  mkdir -p $source
 cd $source
 [ ! -d .repo ] &&  $repo init -u $manifest -g common,devel,nexus5 -b kk4.4
