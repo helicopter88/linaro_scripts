@@ -29,7 +29,7 @@ source build/envsetup.sh
 lunch full_"$device"-userdebug &> build.log
 [ ! -d $OUT ] ||  rm -Rf $OUT
 make otapackage -j$cores &>> build.log
-[ $0 == 0 ] || echo "Building for $device failed,check build.log"; exit 0
+[ $? != 0 ] && echo "Building for $device failed,check build.log"; return;
 echo "Build completed,it's in $OUT"
 source genchangelog.sh 3 # We only want 3 days of changelog
 
